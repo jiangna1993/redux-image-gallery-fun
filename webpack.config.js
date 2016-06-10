@@ -32,6 +32,11 @@ var config = {
         query: {
           cacheDirectory: true
         }
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+        include: SRC_PATH
       }
     ]
   },
@@ -56,8 +61,6 @@ var config = {
       template: template,
       mobile: true,
       title: 'Redux Saga Image Gallery',
-      // baseHref: 'http://localhost',
-      // devServer: 3000,
       appMountId: 'root'
     })
   ]
