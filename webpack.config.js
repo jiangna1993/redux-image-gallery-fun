@@ -42,7 +42,11 @@ var config = {
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 3000,
     stats: 'errors-only',
-    contentBase: DIST_PATH
+    contentBase: DIST_PATH,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -52,8 +56,8 @@ var config = {
       template: template,
       mobile: true,
       title: 'Redux Saga Image Gallery',
-      baseHref: 'http://localhost',
-      devServer: 3000,
+      // baseHref: 'http://localhost',
+      // devServer: 3000,
       appMountId: 'root'
     })
   ]
