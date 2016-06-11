@@ -1,12 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { imageSelected } from '../actions'
+import { imageSelected, loadImages } from '../actions'
 import { bindActionCreators } from 'redux'
 
 export class Gallery extends Component {
   constructor (props) {
     super(props)
     this.renderImages = this.renderImages.bind(this)
+  }
+
+  componentDidMount () {
+    this.props.loadImages()
   }
 
   renderImages (image, index) {
@@ -39,6 +43,6 @@ const mapStateToProps = (state) => ({
   selectedImage: state.selectedImage
 })
 
-const mapDispatchToProps = (dispatch) => (bindActionCreators({imageSelected}, dispatch))
+const mapDispatchToProps = (dispatch) => (bindActionCreators({imageSelected,loadImages}, dispatch))
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gallery)

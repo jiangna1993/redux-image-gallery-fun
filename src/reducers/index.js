@@ -1,4 +1,4 @@
-import { IMAGE_SELECTED } from '../actions'
+import { IMAGE_SELECTED, IMAGES_LOADED } from '../actions'
 
 const initialState = {
   images: [
@@ -12,8 +12,10 @@ const initialState = {
 
 initialState.selectedImage = initialState.images[0]
 
-export default function rootReducer (state = initialState , action) {
+export default function rootReducer (state = initialState, action) {
   switch (action.type) {
+    case IMAGES_LOADED:
+      return {...state, images: action.images}
     case IMAGE_SELECTED:
       return {...state, selectedImage: action.image}
     default:
